@@ -3,7 +3,6 @@ package service;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
-
 import model.Book;
 import model.Member;
 import model.Transaction;
@@ -325,7 +324,6 @@ public class Library {
             System.out.print("\nEnter your choice: ");
             int choice = sc.nextInt();
             sc.nextLine();
-            System.out.println("Hey i am using the tv to do the code.");
 
             switch (choice) {
                 case 1 -> {
