@@ -4,8 +4,8 @@ import java.util.Date;
 
 public class Attendance {
     private int attendanceId;
-    private Students student;
-    private Courses course;
+    private Student student;
+    private Course course;
     private Date date;
     private String status;
 }

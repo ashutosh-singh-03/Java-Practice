@@ -2,9 +2,9 @@ package com.model;
 
 import java.util.Date;
 
-public class Enrollments {
+public class Enrollment {
     private int enrollmentId;
-    private Students student;
-    private Courses course;
+    private Student student;
+    private Course course;
     private Date enrollmentDate;
 }

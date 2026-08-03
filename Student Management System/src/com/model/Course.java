@@ -1,11 +1,11 @@
 package com.model;
 
-public class Courses {
+public class Course {
     private int courseId;
-    private Courses courseName;
+    private Course courseName;
     private String credits;
-    private Departments department;
-    private FacultyMembers faculty;
+    private Department department;
+    private FacultyMember faculty;
     private String semester;
     private int maximumSeats;
 }

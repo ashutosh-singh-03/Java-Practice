@@ -2,7 +2,7 @@ package com.model;
 
 import java.util.Date;
 
-public class Students {
+public class Student {
     private int studentId;
     private String name;
     private int age;
@@ -10,7 +10,7 @@ public class Students {
     private String email;
     private String phone;
     private String address;
-    private Departments department;
+    private Department department;
     private String semester;
     private Date admissionDate;
     private float cgpa;
