@@ -1,0 +1,14 @@
+package com.model;
+
+import java.util.Date;
+
+public class Faculty {
+    private int facultyId;
+    private String name;
+    private String designation;
+    private Department department;
+    private String email;
+    private String phone;
+    private String experience;
+    private Date joiningDate;
+}
