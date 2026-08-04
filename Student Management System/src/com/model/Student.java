@@ -3,10 +3,13 @@ package com.model;
 import com.enums.Gender;
 import com.enums.StudentStatus;
 
+import java.time.LocalDate;
+import java.time.Period;
+
 public class Student {
     private final String studentId;
     private String name;
-    private int age;
+    private final LocalDate dateOfBirth;
     private final Gender gender;
     private String email;
     private String phone;
@@ -15,11 +18,11 @@ public class Student {
     private float cgpa;
     private StudentStatus status;
 
-    public Student(String studentId, String name, int age, Gender gender, String email, String phone,
+    public Student(String studentId, String name, LocalDate dateOfBirth, Gender gender, String email, String phone,
                    Department department, int semester, float cgpa, StudentStatus status) {
         this.studentId = studentId;
         this.name = name;
-        this.age = age;
+        this.dateOfBirth = dateOfBirth;
         this.gender = gender;
         this.email = email;
         this.phone = phone;
@@ -41,8 +44,8 @@ public class Student {
         return name;
     }
 
-    public int getAge() {
-        return age;
+    public LocalDate getDateOfBirth() {
+        return dateOfBirth;
     }
 
     public Gender getGender() {
@@ -81,10 +84,6 @@ public class Student {
         this.department = department;
     }
 
-    public void setAge(int age) {
-        this.age = age;
-    }
-
     public void setPhone(String phone) {
         this.phone = phone;
     }
@@ -101,12 +100,20 @@ public class Student {
         this.status = status;
     }
 
+    public int getAge() {
+        if (dateOfBirth == null) return 0;
+        LocalDate current = LocalDate.now();
+
+        Period age = Period.between(dateOfBirth, current);
+        return age.getYears();
+    }
+
     @Override
     public String toString() {
         return "Student{" +
                 "studentId=" + studentId +
                 ", name='" + name + '\'' +
-                ", age=" + age +
+                ", dateOfBirth=" + dateOfBirth +
                 ", gender=" + gender +
                 ", email='" + email + '\'' +
                 ", phone='" + phone + '\'' +
