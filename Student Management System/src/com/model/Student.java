@@ -3,8 +3,6 @@ package com.model;
 import com.enums.Gender;
 import com.enums.StudentStatus;
 
-import java.time.LocalDate;
-
 public class Student {
     private final String studentId;
     private String name;
