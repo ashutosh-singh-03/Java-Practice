@@ -3,7 +3,7 @@ package com.model;
 import java.util.Date;
 
 public class Faculty {
-    private int facultyId;
+    private String facultyId;
     private String name;
     private String designation;
     private Department department;

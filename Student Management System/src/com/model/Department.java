@@ -1,7 +1,7 @@
 package com.model;
 
 //Record Class
-public record Department(int departmentId, String departmentName, String hodName) {
+public record Department(String departmentId, String departmentName, String hodName) {
 
     @Override
     public String toString() {
