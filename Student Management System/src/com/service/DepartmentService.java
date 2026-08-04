@@ -13,31 +13,31 @@ public class DepartmentService {
 
     public boolean addDepartment(Department department) {
         if (department == null) return false;
-        else if (searchDepartment(department.departmentId()) != null) return false;
+        else if (searchDepartmentById(department.departmentId()) != null) return false;
         departments.add(department);
         return true;
     }
 
-    public boolean removeDepartment(int id) {
-        Department department = searchDepartment(id);
+    public boolean removeDepartment(String id) {
+        Department department = searchDepartmentById(id);
         if (department == null) return false;
         departments.remove(department);
         return true;
     }
 
-    public boolean updateDepartment(int id, String newName, String newHod, String newLocation) {
-        Department oldDepartment = searchDepartment(id);
+    public boolean updateDepartment(String id, String newName, String newHod) {
+        Department oldDepartment = searchDepartmentById(id);
         if (oldDepartment == null) return false;
         departments.remove(oldDepartment);
 
-        Department updatedDepartment = new Department(id, newName, newHod, newLocation);
+        Department updatedDepartment = new Department(id, newName, newHod);
         departments.add(updatedDepartment);
         return true;
     }
 
-    public Department searchDepartment(int id) {
+    public Department searchDepartmentById(String id) {
         for (Department department : departments) {
-            if (department.departmentId() == id) return department;
+            if (department.departmentId().equalsIgnoreCase(id)) return department;
         }
         return null;
     }
