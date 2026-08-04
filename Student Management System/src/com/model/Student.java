@@ -96,12 +96,19 @@ public class Student {
         this.cgpa = cgpa;
     }
 
-    public void setStatus(StudentStatus status) {
-        this.status = status;
+    public void graduate() {
+        this.status = StudentStatus.GRADUATED;
+    }
+
+    public boolean isActive() {
+        return status == StudentStatus.ACTIVE;
+    }
+
+    public boolean isGraduated() {
+        return status == StudentStatus.GRADUATED;
     }
 
     public int getAge() {
-        if (dateOfBirth == null) return 0;
         LocalDate current = LocalDate.now();
 
         Period age = Period.between(dateOfBirth, current);
@@ -111,16 +118,16 @@ public class Student {
     @Override
     public String toString() {
         return "Student{" +
-                "studentId=" + studentId +
+                "studentId='" + studentId + '\'' +
                 ", name='" + name + '\'' +
-                ", dateOfBirth=" + dateOfBirth +
+                ", age=" + getAge() +
                 ", gender=" + gender +
                 ", email='" + email + '\'' +
                 ", phone='" + phone + '\'' +
-                ", department=" + department +
-                ", semester='" + semester + '\'' +
+                ", department=" + department.departmentName() +
+                ", semester=" + semester +
                 ", cgpa=" + cgpa +
-                ", status='" + status + '\'' +
+                ", status=" + status +
                 '}';
     }
 }

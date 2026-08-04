@@ -25,30 +25,34 @@ public class StudentService {
         return true;
     }
 
-    public boolean updateStudent(String id, String newName, String newMail, String newPhone,
-                                 Department newDepartment, int newSemester, float newCgpa, StudentStatus newStatus) {
+    public boolean updateAcademicDetails(
+            String id, Department newDepartment, int newSemester, float newCgpa
+    ) {
         Student student = searchStudentById(id);
-        if (student == null) {
-            System.out.println("Student not Found!");
-            return false;
-        }
-        student.setName(newName);
-        student.setEmail(newMail);
-        student.setPhone(newPhone);
+        if (student == null) return false;
+
         student.setDepartment(newDepartment);
         student.setSemester(newSemester);
         student.setCgpa(newCgpa);
-        student.setStatus(newStatus);
+        return true;
+    }
+
+    public boolean updatePersonalDetails(
+            String id, String newName, String newMail, String newPhone
+    ) {
+        Student student = searchStudentById(id);
+        if (student == null) return false;
+
+        student.setName(newName);
+        student.setEmail(newMail);
+        student.setPhone(newPhone);
         return true;
     }
 
     public boolean deleteStudent(String id) {
         Student student = searchStudentById(id);
 
-        if (student == null) {
-            System.out.println("No student found!");
-            return false;
-        }
+        if (student == null) return false;
         students.remove(student);
         return true;
     }
@@ -60,20 +64,20 @@ public class StudentService {
         return null;
     }
 
-    public ArrayList<Student> searchStudentByName(String name) {
-        ArrayList<Student> foundStudents = new ArrayList<>();
+    public List<Student> searchStudentByName(String name) {
+        List<Student> foundStudents = new ArrayList<>();
         for (Student student : students) {
-            if (student.getName().equalsIgnoreCase(name)) foundStudents.add(student);
+            if (student.getName().contains(name)) foundStudents.add(student);
         }
         return foundStudents;
     }
 
-    public ArrayList<Student> getAllStudents() {
+    public List<Student> getAllStudents() {
         return new ArrayList<>(students);
     }
 
-    public ArrayList<Student> getStudentByDepartment(String departmentName) {
-        ArrayList<Student> foundStudents = new ArrayList<>();
+    public List<Student> getStudentByDepartment(String departmentName) {
+        List<Student> foundStudents = new ArrayList<>();
         for (Student student : students) {
             if (student.getDepartment().departmentName().equalsIgnoreCase(departmentName))
                 foundStudents.add(student);
@@ -81,7 +85,7 @@ public class StudentService {
         return foundStudents;
     }
 
-    public ArrayList<Student> getStudentBySemester(int semester) {
+    public List<Student> getStudentBySemester(int semester) {
         ArrayList<Student> foundStudents = new ArrayList<>();
         for (Student student : students) {
             if (student.getSemester() == semester) foundStudents.add(student);
@@ -89,18 +93,28 @@ public class StudentService {
         return foundStudents;
     }
 
-    public ArrayList<Student> displayStudentSortedByName() {
-        ArrayList<Student> sortedStudent = new ArrayList<>(students);
+    public List<Student> getStudentSortedByName() {
+        List<Student> sortedStudent = new ArrayList<>(students);
         sortedStudent.sort(Comparator.comparing(Student::getName));
 
         return sortedStudent;
     }
 
-    public ArrayList<Student> displayStudentSortedByCGPA() {
-        ArrayList<Student> sorted = new ArrayList<>(students);
+    public List<Student> getStudentSortedByCGPA() {
+        List<Student> sorted = new ArrayList<>(students);
         sorted.sort(
                 Comparator.comparingDouble(Student::getCgpa).reversed()
         );
         return sorted;
+    }
+
+    public boolean graduateStudent(String id) {
+        Student student = searchStudentById(id);
+
+        if (student == null) return false;
+        if (student.getSemester() < 8) return false;
+
+        student.graduate();
+        return true;
     }
 }
