@@ -1,10 +1,12 @@
 # Student Management System
 
-A simple Java-based console application for managing student-related academic records. The project is designed to help organize basic university data such as departments, faculty, courses, and students in one place.
+A simple Java-based console application for managing student-related academic records. The project is designed to help
+organize basic university data such as departments, faculty, courses, and students in one place.
 
 ## Overview
 
-This system focuses on core academic management tasks. It allows you to create and maintain records for different entities in the institution and perform basic searches and updates without relying on a database.
+This system focuses on core academic management tasks. It allows you to create and maintain records for different
+entities in the institution and perform basic searches and updates without relying on a database.
 
 ## Current Features
 

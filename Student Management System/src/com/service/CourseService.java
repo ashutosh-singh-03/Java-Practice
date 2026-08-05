@@ -1,7 +1,6 @@
 package com.service;
 
 import com.model.Course;
-import com.model.Department;
 
 import java.util.ArrayList;
 import java.util.List;

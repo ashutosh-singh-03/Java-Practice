@@ -1,7 +1,5 @@
 package com.model;
 
-import java.time.LocalDate;
-
 public class Faculty {
     private final String facultyId;
     private String name;
