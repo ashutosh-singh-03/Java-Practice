@@ -64,13 +64,13 @@ public class EnrollmentService {
 
     public boolean isAlreadyEnrolled(String studentId, String courseId) {
         for (Enrollment enrollment : enrollments) {
-            if (enrollment.getStudent().getStudentId().equalsIgnoreCase(studentId) ||
+            if (enrollment.getStudent().getStudentId().equalsIgnoreCase(studentId) &&
                     enrollment.getCourse().getCourseId().equalsIgnoreCase(courseId)) return true;
         }
         return false;
     }
 
     public List<Enrollment> getAllEnrollments() {
-        return enrollments;
+        return new ArrayList<>(enrollments);
     }
 }

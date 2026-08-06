@@ -45,13 +45,13 @@ public class CourseService {
 
     public Course searchByName(String name) {
         for (Course course : courses) {
-            if (course.getCourseId().equalsIgnoreCase(name)) return course;
+            if (course.getCourseName().equalsIgnoreCase(name)) return course;
         }
         return null;
     }
 
     public List<Course> getAllCourses() {
-        return courses;
+        return new ArrayList<>(courses);
     }
 
     public List<Course> getCoursesByDepartment(String deptId) {

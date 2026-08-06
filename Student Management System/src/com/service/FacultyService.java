@@ -36,7 +36,7 @@ public class FacultyService {
         Faculty faculty = searchById(id);
 
         if (faculty == null) return false;
-        faculties.add(faculty);
+        faculties.remove(faculty);
         return true;
     }
 
@@ -56,6 +56,6 @@ public class FacultyService {
     }
 
     public List<Faculty> getAllFaculties() {
-        return faculties;
+        return new ArrayList<>(faculties);
     }
 }

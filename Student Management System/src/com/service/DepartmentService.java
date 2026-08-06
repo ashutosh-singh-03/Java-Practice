@@ -43,6 +43,6 @@ public class DepartmentService {
     }
 
     public ArrayList<Department> getAllDepartments() {
-        return departments;
+        return new ArrayList<>(departments);
     }
 }
