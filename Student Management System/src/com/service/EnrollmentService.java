@@ -16,7 +16,8 @@ public class EnrollmentService {
     }
 
     public boolean addEnrollment(String id, Student student, Course course) {
-        if (student == null || course == null) return false;
+        if (id == null || student == null || course == null) return false;
+        else if (searchEnrollmentById(id) != null) return false;
         else if (isAlreadyEnrolled(student.getStudentId(), course.getCourseId())) return false;
         enrollments.add(new Enrollment(id, student, course, LocalDate.now()));
         return true;
